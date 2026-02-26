@@ -4,11 +4,15 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Dan Mills", email = "52407433+daniel-mills-cqc@users.noreply.github.com" }
+    { name = "Dan Mills", email = "daniel.mills@quantinuum.com" },
+    { name = "Ifan Williams", email = "ifan.williams@quantinuum.com" },
+    { name = "Jacob Swain", email = "jacob.swain@quantinuum.com" },
+    { name = "Gabriel Matos", email = "gabriel.matos@quantinuum.com" },
+    { name = "Enrico Rinaldi", email = "enrico.rinaldi@quantinuum.com" },
+    { name = "Alexander Koziell-Pipe", email = "Alex.Koziell-Pipe@quantinuum.com" },
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "notebook>=7.5.4",
     "pytket>=2.13.0",
     "pytket-quantinuum>=0.58.0",
 ]
