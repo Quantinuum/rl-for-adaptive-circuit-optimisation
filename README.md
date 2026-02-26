@@ -1,0 +1,2 @@
+# rl-for-adaptive-circuit-optimisation
+Repository containing code relevant for reproducing the results of [Reinforcement Learning for Adaptive Composition of Quantum Circuit Optimisation Passes](https://arxiv.org/abs/2601.21629)
