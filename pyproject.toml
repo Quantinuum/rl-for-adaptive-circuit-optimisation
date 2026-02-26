@@ -1,0 +1,23 @@
+[project]
+name = "rl-for-adaptive-circuit-optimisation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Dan Mills", email = "52407433+daniel-mills-cqc@users.noreply.github.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "notebook>=7.5.4",
+    "pytket>=2.13.0",
+    "pytket-quantinuum>=0.58.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.27,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
