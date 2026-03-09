@@ -1,7 +1,7 @@
 [project]
 name = "rl-for-adaptive-circuit-optimisation"
 version = "0.1.0"
-description = "Add your description here"
+description = "Public library for tools to support reproducing the results of 'Reinforcement Learning for Adaptive Composition of Quantum Circuit Optimisation Passes'."
 readme = "README.md"
 authors = [
     { name = "Dan Mills", email = "daniel.mills@quantinuum.com" },
