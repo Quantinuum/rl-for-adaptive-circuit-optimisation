@@ -1,0 +1,27 @@
+[project]
+name = "rl-for-adaptive-circuit-optimisation"
+version = "0.1.0"
+description = "Public library for tools to support reproducing the results of 'Reinforcement Learning for Adaptive Composition of Quantum Circuit Optimisation Passes'."
+readme = "README.md"
+authors = [
+    { name = "Dan Mills", email = "daniel.mills@quantinuum.com" },
+    { name = "Ifan Williams", email = "ifan.williams@quantinuum.com" },
+    { name = "Jacob Swain", email = "jacob.swain@quantinuum.com" },
+    { name = "Gabriel Matos", email = "gabriel.matos@quantinuum.com" },
+    { name = "Enrico Rinaldi", email = "enrico.rinaldi@quantinuum.com" },
+    { name = "Alexander Koziell-Pipe", email = "Alex.Koziell-Pipe@quantinuum.com" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pytket>=2.13.0",
+    "pytket-quantinuum>=0.58.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.27,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
