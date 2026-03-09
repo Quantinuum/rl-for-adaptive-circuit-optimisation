@@ -12,6 +12,8 @@ from pytket.passes import CustomPass
 
 from .named_compiler import NamedCompiler
 
+from rl_for_adaptive_circuit_optimisation.rewards import global_normalisation_reward
+
 
 def get_pass_sequence(
     circuit: Circuit,
@@ -81,23 +83,6 @@ def get_pass_sequence(
         beams = heapq.nlargest(beam_width, new_beams, key=lambda x: x[0])
 
     return beams[0]
-
-
-def global_normalisation_reward(
-    num_2q_gates_before: int, num_2q_gates_after: int, normalisation: int = 1
-) -> float:
-    """Reward normalised with the initial number of 2-qubit gates at the start of the circuit.
-
-    Args:
-        num_2q_gates_before (int): The number of 2-qubit gates before the pass
-        num_2q_gates_after (int): The number of 2-qubit gates after the pass
-    Returns:
-        float: The reward, which is the difference between the number of 2-qubit gates
-        before and after the pass
-    """
-    if normalisation == 0:
-        normalisation = 1  # avoid division by zero
-    return (num_2q_gates_before - num_2q_gates_after) / normalisation
 
 
 def BeamSearch(

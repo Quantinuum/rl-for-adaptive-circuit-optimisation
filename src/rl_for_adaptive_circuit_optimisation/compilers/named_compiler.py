@@ -8,7 +8,7 @@ from pytket.circuit import Circuit
 from pytket.passes import BasePass
 
 
-@dataclass
+@dataclass(kw_only=True)
 class NamedCompiler:
     """Data class containing the compiler to act and its name."""
 
