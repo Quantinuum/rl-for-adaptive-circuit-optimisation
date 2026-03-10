@@ -12,6 +12,27 @@ uv sync
 Plotting scripts live under `rl_for_adaptive_circuit_optimisation.results` and read per-circuit-class
 evaluation CSVs named `evaluation_results_<circuit_class>.csv`.
 
+The evaluation CSVs are published on Zenodo:
+https://zenodo.org/records/18786469
+
+Once downloaded, experiment directories should be structured like:
+
+```
+path/to/experiments/
+  experiment_1/
+    evaluation_results_ordered-clifford-kak.csv
+    evaluation_results_pauli.csv
+    ...
+  experiment_2/
+    evaluation_results_ordered-clifford-kak.csv
+    evaluation_results_pauli.csv
+    ...
+  experiment_3/
+    evaluation_results_ordered-clifford-kak.csv
+    evaluation_results_pauli.csv
+    ...
+```
+
 Each CSV is expected to include at least:
 - `total_reward`
 - `best_n_2q_gates`
@@ -23,7 +44,7 @@ Use `evaluate_many_experiments.py` to aggregate runs and generate plots plus sum
 ```bash
 uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_many_experiments \
   -b path/to/experiments \
-  -f run_01 run_02 run_03
+  -f experiment_1 experiment_2 experiment_3
 ```
 
 Notes:
