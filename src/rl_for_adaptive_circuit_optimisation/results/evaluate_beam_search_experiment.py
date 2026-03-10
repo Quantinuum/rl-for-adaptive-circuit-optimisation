@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 def plot_reward_result(data: pd.DataFrame) -> plt.Figure:
+    """Plot the cumulative reward results for beam search and other optimisation methods."""
 
     h = 4
     w = 1.3 * h
@@ -56,6 +57,7 @@ def plot_reward_result(data: pd.DataFrame) -> plt.Figure:
 
 
 def plot_timing_result(data: pd.DataFrame) -> plt.Figure:
+    """Plot the timing results for beam search and other optimisation methods."""
 
     h = 4
     w = 1.3 * h
