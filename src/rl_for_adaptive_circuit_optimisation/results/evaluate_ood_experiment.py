@@ -11,7 +11,10 @@ from rl_for_adaptive_circuit_optimisation.results.plots import (
     plot_results_full_baseline_distribution,
 )
 
-DIREC = Path("results/ppo_training/very_large_circuits")
+DIREC_PATH = ""  # Path to the folder containing the results of the 'very
+# large circuits' (OOD) experiments, relative to project root
+
+DIREC = Path(DIREC_PATH)
 folders = [Path(DIREC)]
 
 (DIREC / "plots").mkdir(parents=True, exist_ok=True)
