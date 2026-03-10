@@ -22,13 +22,13 @@ from typing import cast
 
 import pandas as pd
 
-from .plots import (
+from rl_for_adaptive_circuit_optimisation.results.plots import (
     plot_results_baseline_medians_only,
     plot_results_full_baseline_distribution,
     plot_results_improvements_over_baselines,
     plot_results_relative_improvements_over_baselines,
 )
-from .utils import (
+from rl_for_adaptive_circuit_optimisation.results.utils import (
     get_project_base_directory,
     read_evaluation_csv,
 )
@@ -226,7 +226,7 @@ if __name__ == "__main__":
         "-b",
         "--base_folder",
         type=str,
-        help="Base folder for the experiments relative to project root",
+        help="Base folder for the experiments relative to project root"
     )
 
     parser.add_argument(
@@ -234,22 +234,7 @@ if __name__ == "__main__":
         "--folders",
         nargs="+",
         type=str,
-        help="Space-separated list of folders to evaluate",
-    )
-
-    parser.add_argument(
-        "-d",
-        "--dataset",
-        type=str,
-        help="Dataset to evaluate",
-        default="iqp_qaoa_rand_pauli_long_ordered_kak_cliff_squash_small",
-    )
-
-    parser.add_argument(
-        "-c",
-        "--circuit_class",
-        type=str,
-        help="Circuit class to evaluate",
+        help="Space-separated list of folders to evaluate"
     )
 
     args = parser.parse_args()

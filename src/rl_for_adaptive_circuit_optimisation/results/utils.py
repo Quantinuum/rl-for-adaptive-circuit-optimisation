@@ -17,7 +17,8 @@ def get_project_base_directory() -> Path:
 
 
 def read_evaluation_csv(input_filename: Path | str) -> pd.DataFrame:
-    """Read an evaluation CSV file, return a DataFrame with proper parsing of action sequences.
+    """Read an evaluation CSV file, return a DataFrame with proper parsing of
+    action sequences.
 
     Args:
         input_filename: Path to the evaluation CSV file.
