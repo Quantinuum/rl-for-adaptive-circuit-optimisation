@@ -71,17 +71,7 @@ Plots are written to `<DIREC_PATH>/plots/`.
 
 ### Beam Search Plots
 
-Beam search plots from the paper can be reproduced by first downloading `beam_search_test_results.csv` from Zenodo as described above, then running a script such as:
-```
-from rl_for_adaptive_circuit_optimisation.results.evaluate_beam_search_experiment import plot_timing_result, plot_reward_result
-import pandas as pd
-
-data = pd.read_csv('/path/to/file/beam_search_test_results.csv')
-
-fig = plot_timing_result(data)
-fig = plot_reward_result(data)
-```
-You may also chose to run the following in the command line.
+Beam search plots from the paper can be reproduced by first downloading `beam_search_test_results.csv` from Zenodo as described above, then running:
 ```
 uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_beam_search_experiment -r beam_search_test_results.csv
 ```
