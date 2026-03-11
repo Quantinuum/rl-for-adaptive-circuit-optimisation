@@ -81,3 +81,8 @@ data = pd.read_csv('/path/to/file/beam_search_test_results.csv')
 fig = plot_timing_result(data)
 fig = plot_reward_result(data)
 ```
+You may also chose to run the following in the command line.
+```
+uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_beam_search_experiment -r beam_search_test_results.csv
+```
+This will save the relevant plots in `reward_results.png` and `timing_results.png`.

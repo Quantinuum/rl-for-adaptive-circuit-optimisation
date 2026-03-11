@@ -1,3 +1,5 @@
+import argparse
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -6,7 +8,12 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 def plot_reward_result(data: pd.DataFrame) -> plt.Figure:
-    """Plot the cumulative reward results for beam search and other optimisation methods."""
+    """
+    Plot the cumulative reward results for beam search and other optimisation methods.
+
+    :param data: DataFrame containing the cumulative reward results.
+    :return: Figure object containing the plot.
+    """
 
     h = 4
     w = 1.3 * h
@@ -41,7 +48,7 @@ def plot_reward_result(data: pd.DataFrame) -> plt.Figure:
     plot.grid(which="minor", linestyle="--", linewidth=0.5, color="gray", alpha=0.5)
 
     # Manually create the legend
-    legend_handles, legend_labels = plot.get_legend_handles_labels()
+    legend_handles, _ = plot.get_legend_handles_labels()
     plt.legend(legend_handles, [
             'RL Model (This Work)',
             'QuantinuumDefaultThree',
@@ -57,7 +64,11 @@ def plot_reward_result(data: pd.DataFrame) -> plt.Figure:
 
 
 def plot_timing_result(data: pd.DataFrame) -> plt.Figure:
-    """Plot the timing results for beam search and other optimisation methods."""
+    """Plot the timing results for beam search and other optimisation methods.
+
+    :param data: DataFrame containing the timing results.
+    :return: Figure object containing the plot.
+    """
 
     h = 4
     w = 1.3 * h
@@ -110,3 +121,25 @@ def plot_timing_result(data: pd.DataFrame) -> plt.Figure:
     plot.axes[0][0].set(xlabel='Original Two-Qubit Gate Count')
 
     return plot.figure
+
+if __name__ == "__main__":
+    
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "-r",
+        "--results_file",
+        type=str,
+        help="Path to the results file relative to project root"
+    )
+
+    args = parser.parse_args()
+
+    with open(args.results_file, "r") as f:
+        data = pd.read_csv(f)
+
+    reward_fig = plot_reward_result(data)
+    reward_fig.savefig("reward_results.png", bbox_inches="tight")
+    
+    timing_fig = plot_timing_result(data)
+    timing_fig.savefig("timing_results.png", bbox_inches="tight")
