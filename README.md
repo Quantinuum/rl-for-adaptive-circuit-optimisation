@@ -59,20 +59,20 @@ Outputs are written to `plots/evaluation_results_<timestamp>/` and include:
 ### Out-of-distribution (OOD) plots
 Use `evaluate_ood_experiment.py` for the very large (OOD) circuits experiment.
 
-1) Edit `DIREC_PATH` in `evaluate_ood_experiment.py` to point at the OOD results folder (relative to the
-	 project root).
-2) Run:
+Plots from the paper can be reproduced by first downloading `very_large_circuits.csv` from Zenodo as described above, then running:
 
 ```bash
-uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_ood_experiment
+uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_ood_experiment -r /path/to/very_large_circuits.csv
 ```
 
-Plots are written to `<DIREC_PATH>/plots/`.
+Plots are written to `/path/to/very_large_circuits.csv/plots/`.
 
 ### Beam Search Plots
 
 Beam search plots from the paper can be reproduced by first downloading `beam_search_test_results.csv` from Zenodo as described above, then running:
-```
+
+```bash
 uv run python -m rl_for_adaptive_circuit_optimisation.results.evaluate_beam_search_experiment -r beam_search_test_results.csv
 ```
+
 This will save the relevant plots in `reward_results.png` and `timing_results.png`.
