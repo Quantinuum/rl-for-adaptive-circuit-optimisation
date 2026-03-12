@@ -19,6 +19,7 @@ dependencies = [
     "pytket>=2.13.0",
     "pytket-quantinuum>=0.58.0",
     "seaborn>=0.13.2",
+    "statsmodels>=0.14.6",
 ]
 
 [build-system]

@@ -670,3 +670,116 @@ def plot_results_relative_improvements_over_baselines(
         plots_folder / f"{file_prefix}_{metric}_rel_improvement_boxplots.csv", "w"
     ) as f:
         _results_df_rel.to_csv(f, index=False)
+
+
+def plot_reward_result_beam_search(data: pd.DataFrame) -> plt.Figure:
+    """
+    Plot the cumulative reward results for beam search and other optimisation methods.
+
+    :param data: DataFrame containing the cumulative reward results.
+    :return: Figure object containing the plot.
+    """
+
+    h = 4
+    w = 1.3 * h
+
+    plt.figure(figsize=(w, h))
+
+    sns.set(rc={'figure.figsize': (w, h)})
+
+    sns.set_theme(style="whitegrid")
+
+    plot = sns.boxplot(
+        data=data,
+        y="Cumulative Reward",
+        hue="Compilation Method",
+        fill=False,
+        showfliers=False,
+        hue_order=[
+            'Model',
+            'QuantinuumDefaultThree',
+            'QuantinuumDefaultTwo',
+            'GreedySearch',
+            'Depth2Width1',
+            'Depth2Width2',
+            'Depth3Width3',
+            'Depth4Width4',
+        ]
+    )
+
+    plot.yaxis.set_minor_locator(
+        ticker.AutoMinorLocator(n=5)
+    )  # 4 minor ticks between major ticks
+    plot.grid(which="minor", linestyle="--", linewidth=0.5, color="gray", alpha=0.5)
+
+    # Manually create the legend
+    legend_handles, _ = plot.get_legend_handles_labels()
+    plt.legend(legend_handles, [
+            'RL Model (This Work)',
+            'QuantinuumDefaultThree',
+            'QuantinuumDefaultTwo',
+            'GreedySearch',
+            'Depth2Width1',
+            'Depth2Width2',
+            'Depth3Width3',
+            'Depth4Width4',
+        ], ncol=2, title='Optimisation Methods', loc='upper left', bbox_to_anchor=(0, 0))
+
+    return plot.get_figure()
+
+
+def plot_timing_result_beam_search(data: pd.DataFrame) -> plt.Figure:
+    """Plot the timing results for beam search and other optimisation methods.
+
+    :param data: DataFrame containing the timing results.
+    :return: Figure object containing the plot.
+    """
+
+    sns.set_theme(style="whitegrid")
+
+    plot = sns.lmplot(
+        data=data,
+        x="Original 2 Qubit Gate Count",
+        y="Time Taken (s)",
+        hue="Compilation Method",
+        markers=".",
+        height=4,
+        aspect=1.225,
+        lowess=True,
+        scatter_kws={"s": 2},
+        hue_order=[
+            'Model',
+            'QuantinuumDefaultThree',
+            'QuantinuumDefaultTwo',
+            'GreedySearch',
+            'Depth2Width1',
+            'Depth2Width2',
+            'Depth3Width3',
+            'Depth4Width4',
+        ],
+        legend=False
+    )
+
+    legend_handles, _ = plot.axes[0][0].get_legend_handles_labels()
+    lgnd = plt.legend(
+        legend_handles, [
+            'RL Model (This Work)',
+            'QuantinuumDefaultThree',
+            'QuantinuumDefaultTwo',
+            'GreedySearch',
+            'Depth2Width1',
+            'Depth2Width2',
+            'Depth3Width3',
+            'Depth4Width4',
+        ], ncol=2, title='Optimisation Methods', loc='upper left', bbox_to_anchor=(0, -0.15)
+    )
+
+    for handle in lgnd.legend_handles:
+        handle.set_sizes([100])
+
+    plot.axes[0][0].set_xlim(100, 300)
+    plot.set(yscale="log")
+
+    plot.axes[0][0].set(xlabel='Original Two-Qubit Gate Count')
+
+    return plot.figure

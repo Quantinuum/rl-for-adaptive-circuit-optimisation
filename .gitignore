@@ -1,0 +1,20 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore environment files
+.env
+venv/
+
+# Ignore data files
+*.json
+*.pkl
+*.log
+*.yaml
+*.txt
+*.pth
+*.0
+*.zip
+*.png
+*.pdf
+*.csv
