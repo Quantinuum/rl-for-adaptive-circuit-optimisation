@@ -1,6 +1,4 @@
 """
-Docstring for compiler_pass_sequence.scripts.stable_baselines.ppo.evaluate_many_summary_statistics
-
 This script evaluates multiple PPO experiment directories to generate summary statistics
 about action sequences taken during evaluations. It processes all evaluation CSV files
 found in the specified experiment directories and produces summary CSV files for each
