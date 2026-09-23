@@ -151,7 +151,6 @@ def main(args: argparse.Namespace) -> None:
     base_folder = get_project_base_directory() / args.base_folder
 
     folders = parse_folder_list(
-        hydra_experiment_name=args.hydra_experiment_name,
         base_folder=base_folder,
         experiment_folders=args.folders,
     )
