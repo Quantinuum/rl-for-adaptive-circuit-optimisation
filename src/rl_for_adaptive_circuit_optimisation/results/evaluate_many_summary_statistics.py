@@ -14,6 +14,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import AutoMinorLocator, MultipleLocator
 
 from .evaluate_many_experiments import (
     parse_folder_list,
@@ -92,7 +93,7 @@ def plot_mean_pass_counts(
     summary.to_csv(output.with_suffix(".csv"), index=False)
 
     plt.style.use("seaborn-v0_8-whitegrid")
-    fig, ax = plt.subplots(figsize=(7, 5.5))
+    fig, ax = plt.subplots(figsize=(6, 5.5))
     x = np.arange(len(summary))
     ax.bar(
         x,
@@ -107,7 +108,7 @@ def plot_mean_pass_counts(
         x,
         [CIRCUIT_CLASS_NAME_DICT.get(c, c) for c in summary.circuit_class],
         rotation=45,
-        ha="right",
+        ha="center",
     )
     ax.set_xlabel("Circuit Class", fontsize=13, labelpad=7)
     ax.set_ylabel(
@@ -122,6 +123,24 @@ def plot_mean_pass_counts(
         0,
         float((summary.mean_count + summary.sd_across_seed_means.fillna(0)).max())
         * 1.18,
+    )
+    ax.yaxis.set_major_locator(MultipleLocator(1))
+    ax.yaxis.set_minor_locator(AutoMinorLocator(5))
+    ax.grid(
+        axis="y",
+        which="major",
+        linestyle="-",
+        linewidth=0.8,
+        color="gray",
+        alpha=0.7,
+    )
+    ax.grid(
+        axis="y",
+        which="minor",
+        linestyle="--",
+        linewidth=0.5,
+        color="gray",
+        alpha=0.5,
     )
     ax.grid(axis="x", visible=False)
     ax.set_axisbelow(True)
