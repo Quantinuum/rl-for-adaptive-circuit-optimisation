@@ -4,9 +4,9 @@ from typing import Literal
 
 import matplotlib.lines
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import pandas as pd
 import seaborn as sns
+from matplotlib import ticker
 
 RESULT_NAME_DICT = {
     "quantinuum_default_opt_3": "QuantinuumDefaultThree",
@@ -179,6 +179,7 @@ def plot_results_baseline_medians_only(
         framealpha=0.75,
         fontsize=8,
         title_fontsize=10,
+        loc="upper left",
     )
 
     plt.xlabel("Circuit Class")
@@ -305,6 +306,7 @@ def plot_results_full_baseline_distribution(
         framealpha=0.75,
         fontsize=8,
         title_fontsize=10,
+        loc="upper left",
     )
 
     plt.xlabel("Circuit Class")
@@ -469,6 +471,7 @@ def plot_results_improvements_over_baselines(
         title="Optimisation Method",
         framealpha=0.75,
         fontsize=8,
+        loc="upper left",
     )
 
     plt.xlabel("Circuit Class")
@@ -636,6 +639,7 @@ def plot_results_relative_improvements_over_baselines(
         title="Optimisation Method",
         framealpha=0.75,
         fontsize=8,
+        loc="upper left",
     )
 
     plt.xlabel("Circuit Class")
@@ -685,7 +689,7 @@ def plot_reward_result_beam_search(data: pd.DataFrame) -> plt.Figure:
 
     plt.figure(figsize=(w, h))
 
-    sns.set(rc={'figure.figsize': (w, h)})
+    sns.set(rc={"figure.figsize": (w, h)})
 
     sns.set_theme(style="whitegrid")
 
@@ -696,15 +700,15 @@ def plot_reward_result_beam_search(data: pd.DataFrame) -> plt.Figure:
         fill=False,
         showfliers=False,
         hue_order=[
-            'Model',
-            'QuantinuumDefaultThree',
-            'QuantinuumDefaultTwo',
-            'GreedySearch',
-            'Depth2Width1',
-            'Depth2Width2',
-            'Depth3Width3',
-            'Depth4Width4',
-        ]
+            "Model",
+            "QuantinuumDefaultThree",
+            "QuantinuumDefaultTwo",
+            "GreedySearch",
+            "Depth2Width1",
+            "Depth2Width2",
+            "Depth3Width3",
+            "Depth4Width4",
+        ],
     )
 
     plot.yaxis.set_minor_locator(
@@ -714,16 +718,23 @@ def plot_reward_result_beam_search(data: pd.DataFrame) -> plt.Figure:
 
     # Manually create the legend
     legend_handles, _ = plot.get_legend_handles_labels()
-    plt.legend(legend_handles, [
-            'RL Model (This Work)',
-            'QuantinuumDefaultThree',
-            'QuantinuumDefaultTwo',
-            'GreedySearch',
-            'Depth2Width1',
-            'Depth2Width2',
-            'Depth3Width3',
-            'Depth4Width4',
-        ], ncol=2, title='Optimisation Methods', loc='upper left', bbox_to_anchor=(0, 0))
+    plt.legend(
+        legend_handles,
+        [
+            "RL Model (This Work)",
+            "QuantinuumDefaultThree",
+            "QuantinuumDefaultTwo",
+            "GreedySearch",
+            "Depth2Width1",
+            "Depth2Width2",
+            "Depth3Width3",
+            "Depth4Width4",
+        ],
+        ncol=2,
+        title="Optimisation Methods",
+        loc="upper left",
+        bbox_to_anchor=(0, 0),
+    )
 
     return plot.get_figure()
 
@@ -748,30 +759,35 @@ def plot_timing_result_beam_search(data: pd.DataFrame) -> plt.Figure:
         lowess=True,
         scatter_kws={"s": 2},
         hue_order=[
-            'Model',
-            'QuantinuumDefaultThree',
-            'QuantinuumDefaultTwo',
-            'GreedySearch',
-            'Depth2Width1',
-            'Depth2Width2',
-            'Depth3Width3',
-            'Depth4Width4',
+            "Model",
+            "QuantinuumDefaultThree",
+            "QuantinuumDefaultTwo",
+            "GreedySearch",
+            "Depth2Width1",
+            "Depth2Width2",
+            "Depth3Width3",
+            "Depth4Width4",
         ],
-        legend=False
+        legend=False,
     )
 
     legend_handles, _ = plot.axes[0][0].get_legend_handles_labels()
     lgnd = plt.legend(
-        legend_handles, [
-            'RL Model (This Work)',
-            'QuantinuumDefaultThree',
-            'QuantinuumDefaultTwo',
-            'GreedySearch',
-            'Depth2Width1',
-            'Depth2Width2',
-            'Depth3Width3',
-            'Depth4Width4',
-        ], ncol=2, title='Optimisation Methods', loc='upper left', bbox_to_anchor=(0, -0.15)
+        legend_handles,
+        [
+            "RL Model (This Work)",
+            "QuantinuumDefaultThree",
+            "QuantinuumDefaultTwo",
+            "GreedySearch",
+            "Depth2Width1",
+            "Depth2Width2",
+            "Depth3Width3",
+            "Depth4Width4",
+        ],
+        ncol=2,
+        title="Optimisation Methods",
+        loc="upper left",
+        bbox_to_anchor=(0, -0.15),
     )
 
     for handle in lgnd.legend_handles:
@@ -780,6 +796,6 @@ def plot_timing_result_beam_search(data: pd.DataFrame) -> plt.Figure:
     plot.axes[0][0].set_xlim(100, 300)
     plot.set(yscale="log")
 
-    plot.axes[0][0].set(xlabel='Original Two-Qubit Gate Count')
+    plot.axes[0][0].set(xlabel="Original Two-Qubit Gate Count")
 
     return plot.figure
