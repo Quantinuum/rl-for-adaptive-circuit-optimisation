@@ -92,7 +92,7 @@ def plot_mean_pass_counts(
     summary.to_csv(output.with_suffix(".csv"), index=False)
 
     plt.style.use("seaborn-v0_8-whitegrid")
-    fig, ax = plt.subplots(figsize=(10, 5.5))
+    fig, ax = plt.subplots(figsize=(7, 5.5))
     x = np.arange(len(summary))
     ax.bar(
         x,
@@ -106,8 +106,8 @@ def plot_mean_pass_counts(
     ax.set_xticks(
         x,
         [CIRCUIT_CLASS_NAME_DICT.get(c, c) for c in summary.circuit_class],
-        rotation=30,
-        ha="center",
+        rotation=45,
+        ha="right",
     )
     ax.set_xlabel("Circuit Class", fontsize=13, labelpad=7)
     ax.set_ylabel(
