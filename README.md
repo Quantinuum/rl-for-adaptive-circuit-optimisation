@@ -57,6 +57,19 @@ Outputs are written to `plots/evaluation_results_<timestamp>/` and include:
 - PDFs of boxplots
 - CSVs used to generate each plot
 
+### Mean optimisation pass count bar chart
+
+Run from the project root, using one experiment folder per seed, to plot mean optimisation passes per circuit class:
+
+```bash
+uv run -m rl_for_adaptive_circuit_optimisation.results.evaluate_many_summary_statistics \
+  -b path/to/experiments \
+  -f experiment_1 experiment_2 experiment_3 \
+  --output plots/mean_passes_by_circuit_type
+```
+
+Saves PDF/PNG plots and summary CSVs at the `--output` stem. Bars average per-seed means; error bars show their standard deviation. Counts use full action sequences and exclude `DoNothing` unless `--include-do-nothing` is added.
+
 ### Out-of-distribution (OOD) plots
 Use `evaluate_ood_experiment.py` for the very large (OOD) circuits experiment.
 
